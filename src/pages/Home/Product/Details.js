@@ -20,7 +20,12 @@ const Details = () => {
         <Container className="mt-5 ">
             <Row md={2} >
                 <Col>
-                    <img style={{ width: '350px' }} src={img} alt="" />
+                    {img.startsWith('/9') ?
+                        <img src={`data:image/png;base64,${img}`} alt="" /> :
+
+                        <img src={img} alt="" />
+                    }
+
                     <br />
 
                     <h5>{category}</h5>
@@ -33,10 +38,10 @@ const Details = () => {
                     <p>Brand: {seller}</p>
                     <p>Stock: {stock} left</p>
                     <hr />
-                    <div className="m-2 p-2">
+                    <div className="d-flex flex-row m-2 ">
                         <Button>Update this product</Button>
 
-                        <Link style={{ textDecoration: 'none' }} to='/home'> <Button className="ms-5">View All Products</Button></Link>
+                        <Link style={{ textDecoration: 'none' }} to='/home'> <Button className="ms-5"> All Products</Button></Link>
 
                     </div>
 

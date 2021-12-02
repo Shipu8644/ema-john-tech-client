@@ -3,22 +3,30 @@ import { Button, Form } from 'react-bootstrap';
 import Header from '../Header/Header';
 
 const AddDoctor = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const [category, setCategory] = useState('');
+    const [price, setPrice] = useState('');
     const [image, setImage] = useState(null);
     const [success, setSuccess] = useState(false);
-    console.log(name, email)
+
 
     const handleSubmit = e => {
+
         if (!image) {
             return;
         }
         const formData = new FormData();
-        formData.append('name', name);
-        formData.append('email', email);
+        formData.append('category', category);
+        formData.append('price', price);
         formData.append('image', image);
+        formData.append('star', 4.5);
+        formData.append('stock', 15);
+        formData.append('seller', "Brand Name");
+        formData.append('starCount', 2000);
+        formData.append('name', "Product naming is the discipline of deciding what a product will be called, and is very similar in concept");
 
-        fetch('https://still-fortress-16838.herokuapp.com/doctors', {
+
+
+        fetch('http://localhost:5000/products', {
             method: 'POST',
             body: formData
         })
@@ -31,8 +39,8 @@ const AddDoctor = () => {
             .catch(error => {
                 console.error('Error:', error);
             });
-
         e.preventDefault();
+
     }
 
     return (
@@ -44,9 +52,10 @@ const AddDoctor = () => {
 
                     <Form.Group controlId="formGridName">
                         <Form.Control
-                            style={{ width: '100%' }}
+                            required
+                            style={{ width: '90%' }}
                             type="text"
-                            onChange={e => setName(e.target.value)}
+                            onChange={e => setCategory(e.target.value)}
                             placeholder="Enter Product Category"
                         />
                     </Form.Group>
@@ -54,25 +63,26 @@ const AddDoctor = () => {
                     <Form.Group controlId="formGridEmail">
 
                         <Form.Control
-                            style={{ width: '100%' }}
-                            type="email"
-                            onChange={e => setEmail(e.target.value)}
+                            required
+                            style={{ width: '90%' }}
+                            type="number"
+                            onChange={e => setPrice(e.target.value)}
                             placeholder="Enter the Price"
                         />
                     </Form.Group>
                     <br />
                     <div className='d-flex flex-row'>
-                        <p className="p-1 me-2">Product image:</p>
+                        <p className="me-2">Product image:</p>
                         <input
+                            required
                             accept="image/*"
                             type="file"
                             onChange={e => setImage(e.target.files[0])}
                         />
                     </div>
                     <br />
-
+                    {success && <p style={{ color: 'green' }}>{success}</p>}
                     <Button type="submit" className="w-75">Submit</Button>
-
                 </Form>
             </div>
         </div>

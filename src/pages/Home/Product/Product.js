@@ -4,13 +4,18 @@ import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 
 const Product = ({ product, handleAddToCart }) => {
-    const { name, img, seller, price, stock, star, category, _id
-    } = product;
-
+    const { img, price, star, category, _id } = product;
+    console.log(img);
     return (
 
         <div className="single-product">
-            <img src={img} alt="" />
+            {img.startsWith('/9') ?
+                <img src={`data:image/png;base64,${img}`} alt="" /> :
+
+                <img src={img} alt="" />
+            }
+
+
             <h5 style={{ marginTop: '20px' }}>{category}</h5>
             <Rating
                 style={{ color: '#DAA520' }}
