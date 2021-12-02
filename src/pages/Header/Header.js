@@ -17,10 +17,10 @@ const Header = (props) => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Form className="w-100 p-1 ">
+                            <Form className="w-100 p-1 media">
                                 <FormControl
                                     type="search"
-                                    placeholder="Search by category "
+                                    placeholder="Search by category exp: mobile/camera/laptop "
                                     className="me-2"
                                     aria-label="Search"
                                     value={props.term}

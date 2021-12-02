@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 
-const Product = ({ product }) => {
+const Product = ({ product, handleAddToCart }) => {
     const { name, img, seller, price, stock, star, category, _id
     } = product;
 
@@ -23,7 +23,7 @@ const Product = ({ product }) => {
             <br />
             <Link to={`/view-product/${_id}`}> <Button className="mb-2 mt-2">View Product</Button></Link>
             <br />
-            <Button>Add to Cart</Button>
+            <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
         </div>
 
 
