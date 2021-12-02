@@ -13,14 +13,14 @@ const Details = () => {
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id])
-    const { name, img, seller, price, stock, star, category, _id,
+    const { name, img, seller, price, stock, category, _id,
         starCount } = product;
 
     return (
         <Container className="mt-5 ">
             <Row md={2} >
                 <Col>
-                    {img.startsWith('/9') ?
+                    {img?.startsWith('/9') ?
                         <img src={`data:image/png;base64,${img}`} alt="" /> :
 
                         <img src={img} alt="" />
