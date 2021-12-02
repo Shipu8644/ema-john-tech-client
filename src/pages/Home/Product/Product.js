@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
-    const { name, img, seller, price, stock, star, category
+    const { name, img, seller, price, stock, star, category, _id
     } = product;
+
     return (
 
         <div className="single-product">
@@ -19,7 +21,7 @@ const Product = ({ product }) => {
             <br />
             <small>price: <strong>${price}</strong> </small>
             <br />
-            <Button className="mb-2 mt-2">View Product</Button>
+            <Link to={`/view-product/${_id}`}> <Button className="mb-2 mt-2">View Product</Button></Link>
             <br />
             <Button>Add to Cart</Button>
         </div>

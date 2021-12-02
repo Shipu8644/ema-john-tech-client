@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Form, FormControl, Nav, Navbar, Button, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Header.css';
 const Header = () => {
     const handleSearch = event => {
@@ -10,7 +11,8 @@ const Header = () => {
         <div className='pt-5'>
             <Navbar collapseOnSelect expand="lg" fixed='top' bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="#home">Ema-John</Navbar.Brand>
+                    <Link to='/home'> <Navbar.Brand >Ema-John</Navbar.Brand></Link>
+
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
