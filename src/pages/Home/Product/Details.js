@@ -39,7 +39,7 @@ const Details = () => {
                     <p>Stock: {stock} left</p>
                     <hr />
                     <div className="d-flex flex-row m-2 ">
-                        <Button>Update this product</Button>
+                        <Link style={{ textDecoration: 'none' }} to={`/update-product/${_id}`}> <Button>Update this product</Button></Link>
 
                         <Link style={{ textDecoration: 'none' }} to='/home'> <Button className="ms-5"> All Products</Button></Link>
 
