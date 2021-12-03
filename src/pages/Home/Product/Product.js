@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Product = ({ product, handleAddToCart }) => {
     const { img, price, star, category, _id } = product;
-    console.log(img);
+
     return (
 
         <div className="single-product">

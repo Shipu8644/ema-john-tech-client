@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import Header from '../Header/Header';
 
-const AddDoctor = () => {
+const AddProduct = () => {
     const [category, setCategory] = useState('');
     const [price, setPrice] = useState('');
     const [image, setImage] = useState(null);
@@ -15,6 +15,7 @@ const AddDoctor = () => {
             return;
         }
         const formData = new FormData();
+        formData.append('key', Math.random().toString(36).substring(2, 12));
         formData.append('category', category);
         formData.append('price', price);
         formData.append('image', image);
@@ -81,7 +82,7 @@ const AddDoctor = () => {
                         />
                     </div>
                     <br />
-                    {success && <p style={{ color: 'green' }}>{success}</p>}
+                    {success && <p style={{ color: 'red' }}>{success}</p>}
                     <Button type="submit" className="w-75">Submit</Button>
                 </Form>
             </div>
@@ -89,4 +90,4 @@ const AddDoctor = () => {
     );
 };
 
-export default AddDoctor;
+export default AddProduct;
