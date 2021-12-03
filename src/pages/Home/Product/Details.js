@@ -1,13 +1,16 @@
 
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Button } from 'react-bootstrap';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import Header from '../../Header/Header';
 
 const Details = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
 
+    const location = useLocation();
+    console.log(location);
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)
             .then(res => res.json())
@@ -15,9 +18,10 @@ const Details = () => {
     }, [id])
     const { name, img, seller, price, stock, category, _id,
         starCount } = product;
-
+    // style={ someCondition ? { textAlign:'center', paddingTop: '50%'} : {}}
     return (
         <Container className="mt-5 ">
+            <Header></Header>
             <Row md={2} >
                 <Col>
                     {img?.startsWith('/9') ?

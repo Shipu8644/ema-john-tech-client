@@ -16,7 +16,7 @@ const Header = (props) => {
 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
+                        <Nav className="me-auto search">
                             <Form className="w-100 p-1 media">
                                 <FormControl
                                     type="search"
@@ -30,6 +30,7 @@ const Header = (props) => {
                         </Nav>
 
                         <Nav.Link className="text-white" as={Link} to="/add-product">Add New Product</Nav.Link>
+                        <Nav.Link className="text-white" as={Link} to="/action">Action</Nav.Link>
 
                     </Navbar.Collapse>
                 </Container>

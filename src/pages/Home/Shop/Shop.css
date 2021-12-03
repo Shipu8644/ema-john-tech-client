@@ -22,7 +22,7 @@
     text-align: left;
     background-color:  #E6E6FA;
     color: black;
-    width: 25%;
+    width: 23%;
     padding: 10px;
     border-radius: 10px;
     
@@ -51,6 +51,7 @@
         position: relative;
         order: 1;
         width: 100%;
+       
      }
   
   }
