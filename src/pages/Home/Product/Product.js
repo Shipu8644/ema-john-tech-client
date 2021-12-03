@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 
-const Product = ({ product, handleAddToCart }) => {
+const Product = ({ product, handleAddToCart, handleRemoveFromCart }) => {
     const { img, price, star, category, _id } = product;
 
     return (
@@ -28,10 +28,10 @@ const Product = ({ product, handleAddToCart }) => {
             <br />
             <Link to={`/view-product/${_id}`}> <Button className="mb-2 mt-2">View Product</Button></Link>
             <br />
-            <Button onClick={() => handleAddToCart(product, "add")}>Add to Cart</Button>
+            <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
             <br />
             <br />
-            <Button onClick={() => handleAddToCart(product, "remove")}>Remove from Cart</Button>
+            <Button onClick={() => handleRemoveFromCart(product)}>Remove from Cart</Button>
         </div>
 
 

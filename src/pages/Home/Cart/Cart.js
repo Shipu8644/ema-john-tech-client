@@ -28,7 +28,7 @@ const Cart = ({ cart }) => {
                 <p>tax: ${tax.toFixed(2)}</p>
                 <p>Grand Total: ${grandTotal.toFixed(2)}</p>
                 <br />
-                {totalQuantity > 1 && <p>Your total: ${grandTotal.toFixed(2) - grandTotal.toFixed(2) * (20 / 100)} [After Discount]</p>}
+                {totalQuantity > 1 && <p>Your total: ${(grandTotal.toFixed(2) - grandTotal.toFixed(2) * (20 / 100)).toFixed(2)} [After Discount]</p>}
             </div>
         </div>
     );

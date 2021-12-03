@@ -7,6 +7,7 @@ const Header = (props) => {
         const searchText = event.target.value;
         props.searchHandler(searchText);
     }
+    console.log(props);
 
     return (
         <div className='pt-5'>
@@ -16,7 +17,11 @@ const Header = (props) => {
 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto search">
+                        <Nav className="me-auto" style={{
+                            display: (
+                                (props.show === 'show' && 'none')
+                            )
+                        }}>
                             <Form className="w-100 p-1 media">
                                 <FormControl
                                     type="search"

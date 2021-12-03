@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import swal from 'sweetalert';
 import Header from '../Header/Header';
 
 const AddProduct = () => {
     const [category, setCategory] = useState('');
     const [price, setPrice] = useState('');
     const [image, setImage] = useState(null);
-    const [success, setSuccess] = useState(false);
+
 
 
     const handleSubmit = e => {
@@ -33,20 +34,31 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.insertedId) {
-                    setSuccess('Product added successfully');
+                if (!data.insertedId) {
+                    swal({
+                        title: "Good job!",
+                        text: "You added a new product!",
+                        icon: "success",
+                        button: "Done!",
+                    });
                 }
+
             })
             .catch(error => {
                 console.error('Error:', error);
+                swal("Oops", "There is an error!", "error");
             });
+
+
         e.preventDefault();
 
     }
 
     return (
         <div>
-            <Header></Header>
+            <Header
+                show="show"
+            ></Header>
             <h3 className='mt-5 mb-4'>Add A Product</h3>
             <div className='d-flex justify-content-center align-items-center flex-column'>
                 <Form onSubmit={handleSubmit}>
@@ -82,7 +94,7 @@ const AddProduct = () => {
                         />
                     </div>
                     <br />
-                    {success && <p style={{ color: 'red' }}>{success}</p>}
+
                     <Button type="submit" className="w-75">Submit</Button>
                 </Form>
             </div>

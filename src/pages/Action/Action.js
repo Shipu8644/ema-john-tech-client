@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Spinner } from 'react-bootstrap';
+import swal from 'sweetalert';
 import useProducts from '../../hooks/useProducts';
 import Header from '../Header/Header';
 import ShowProduct from './ShowProduct';
@@ -18,20 +19,47 @@ const Action = () => {
     }
 
     const handleProductDelete = id => {
-        const proceed = window.confirm('Are you sure to delete?');
-        if (proceed) {
-            fetch(`http://localhost:5000/products/${id}`, {
-                method: "DELETE"
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert('Delete Successfully')
-                        const remainingProducts = displayProducts.filter(product => product._id !== id);
-                        setDisplayProducts(remainingProducts);
-                    }
-                })
-        }
+        // const proceed = window.confirm('Are you sure to delete?');
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`http://localhost:5000/products/${id}`, {
+                        method: "DELETE"
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
+                                swal("Poof! This Product has been deleted!", {
+                                    icon: "success",
+                                });
+                                const remainingProducts = displayProducts.filter(product => product._id !== id);
+                                setDisplayProducts(remainingProducts);
+                            }
+                        })
+
+                } else {
+                    swal("This Product is safe!");
+                }
+            });
+        // if (proceed) {
+        //     fetch(`http://localhost:5000/products/${id}`, {
+        //         method: "DELETE"
+        //     })
+        //         .then(res => res.json())
+        //         .then(data => {
+        //             if (data.deletedCount > 0) {
+        //                 const remainingProducts = displayProducts.filter(product => product._id !== id);
+        //                 setDisplayProducts(remainingProducts);
+        //             }
+        //         })
+        // }
     }
 
     return (

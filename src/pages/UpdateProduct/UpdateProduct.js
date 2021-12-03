@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import useProducts from '../../hooks/useProducts';
+import swal from 'sweetalert';
+
 import Header from '../Header/Header';
 
 const UpdateProduct = () => {
     const [product, setProduct] = useState({});
     const { id } = useParams();
-    // const [products] = useProducts();
-    const [success, setSuccess] = useState(false);
+
+
 
 
 
@@ -40,15 +41,28 @@ const UpdateProduct = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert("Update Successful");
+                    // alert("Update Successful");
+                    swal({
+                        title: "Good job!",
+                        text: "You edited the product details!",
+                        icon: "success",
+                        button: "Done!",
+                    });
 
                 }
             })
+            .catch(error => {
+                console.error('Error:', error);
+                swal("Oops", "There is an error!", "error");
+            });
 
     }
 
     return (
         <Container>
+            <Header
+                show="show"
+            ></Header>
             <h3 className='mt-5 mb-4'>Product name: <span style={{ color: 'red', fontSize: '20px' }}>{product.name}</span></h3>
             <div className='container ms-lg-5 '>
                 <h2>Edit Below:</h2>

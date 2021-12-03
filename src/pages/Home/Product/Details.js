@@ -18,10 +18,12 @@ const Details = () => {
     }, [id])
     const { name, img, seller, price, stock, category, _id,
         starCount } = product;
-    // style={ someCondition ? { textAlign:'center', paddingTop: '50%'} : {}}
+
     return (
         <Container className="mt-5 ">
-            <Header></Header>
+            <Header
+                show="show"
+            ></Header>
             <Row md={2} >
                 <Col>
                     {img?.startsWith('/9') ?
