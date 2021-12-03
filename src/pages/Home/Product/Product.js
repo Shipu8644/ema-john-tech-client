@@ -28,7 +28,10 @@ const Product = ({ product, handleAddToCart }) => {
             <br />
             <Link to={`/view-product/${_id}`}> <Button className="mb-2 mt-2">View Product</Button></Link>
             <br />
-            <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+            <Button onClick={() => handleAddToCart(product, "add")}>Add to Cart</Button>
+            <br />
+            <br />
+            <Button onClick={() => handleAddToCart(product, "remove")}>Remove from Cart</Button>
         </div>
 
 
