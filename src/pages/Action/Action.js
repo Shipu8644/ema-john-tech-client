@@ -13,7 +13,6 @@ const Action = () => {
     const searchHandler = searchTerm => {
         setSearchTerm(searchTerm);
         const matchedProducts = products.filter(product => product.category.toLowerCase().includes(searchTerm.toLowerCase()));
-        console.log(matchedProducts.length);
         setDisplayProducts(matchedProducts);
     }
 

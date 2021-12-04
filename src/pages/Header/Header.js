@@ -36,6 +36,7 @@ const Header = (props) => {
                             </Form>
                         </Nav>
 
+                        <Nav.Link className="text-white" as={Link} to="/home">Home</Nav.Link>
                         <Nav.Link className="text-white" as={Link} to="/add-product">Add New Product</Nav.Link>
                         <Nav.Link className="text-white" as={Link} to="/action">Action</Nav.Link>
 

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row, Button } from 'react-bootstrap';
+import { Col, Container, Row, Button, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import Header from '../../Header/Header';
@@ -24,36 +24,41 @@ const Details = () => {
             <Header
                 show="show"
             ></Header>
-            <Row md={2} xs={1} >
-                <Col>
-                    {img?.startsWith('/9') ?
-                        <img style={{ width: '300px' }} className="img-fluid" src={`data:image/png;base64,${img}`} alt="" /> :
+            {Object.keys(product).length === 0 ?
 
-                        <img style={{ width: '300px' }} className="img-fluid" src={img} alt="" />
-                    }
+                <Spinner animation="border" /> :
 
-                    <br />
+                <Row md={2} xs={1} >
+                    <Col>
+                        <div className='mb-3'>
+                            {img?.startsWith('/9') ?
+                                <img style={{ width: '300px' }} className="img-fluid" src={`data:image/png;base64,${img}`} alt="" /> :
 
-                    <h5>{category}</h5>
+                                <img style={{ width: '300px' }} className="img-fluid" src={img} alt="" />
+                            }
+                        </div>
 
-                </Col>
-                <Col style={{ textAlign: 'left' }} >
-                    <h5 style={{ color: 'blue' }}>{name}</h5>
-                    <p>Price: $<strong style={{ color: 'red' }}>{price}</strong></p>
-                    <p>viewed by {starCount} people</p>
-                    <p>Brand: {seller}</p>
-                    <p>Stock: {stock} left</p>
-                    <hr />
-                    <div className="d-flex flex-row m-2 ">
-                        <Link style={{ textDecoration: 'none' }} to={`/update-product/${_id}`}> <Button>Update this product</Button></Link>
+                        <h5>{category}</h5>
 
-                        <Link style={{ textDecoration: 'none' }} to='/home'> <Button className="ms-5"> All Products</Button></Link>
+                    </Col>
+                    <Col style={{ textAlign: 'left' }} >
+                        <h5 style={{ color: 'blue' }}>{name}</h5>
+                        <p>Price: $<strong style={{ color: 'red' }}>{price}</strong></p>
+                        <p>viewed by {starCount} people</p>
+                        <p>Brand: {seller}</p>
+                        <p>Stock: {stock} left</p>
+                        <hr />
+                        <div className="d-flex flex-row m-2 ">
+                            <Link style={{ textDecoration: 'none' }} to={`/update-product/${_id}`}> <Button>Update this product</Button></Link>
 
-                    </div>
+                            <Link style={{ textDecoration: 'none' }} to='/home'> <Button className="ms-5"> All Products</Button></Link>
+
+                        </div>
 
 
-                </Col>
-            </Row>
+                    </Col>
+                </Row>
+            }
         </Container>
     );
 };
