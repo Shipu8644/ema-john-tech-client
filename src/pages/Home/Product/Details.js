@@ -5,9 +5,11 @@ import { useLocation, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import Header from '../../Header/Header';
 
+
 const Details = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
+
 
     const location = useLocation();
     console.log(location);

@@ -3,23 +3,22 @@ import { Container, Spinner } from 'react-bootstrap';
 import swal from 'sweetalert';
 import useProducts from '../../hooks/useProducts';
 import Header from '../Header/Header';
-import ShowProduct from './ShowProduct';
+import ShowProduct from './ShowProduct'
 
 const Action = () => {
     const [products] = useProducts();
     const [displayProducts, setDisplayProducts] = useProducts();
     const [searchTerm, setSearchTerm] = useState('');
 
-    const searchHandler = searchText => {
-        setSearchTerm(searchText);
-        // console.log(searchTerm);
-        const matchedProducts = products.filter(product => product.category.toLowerCase().includes(searchText.toLowerCase()));
-        console.log(matchedProducts);
+    const searchHandler = searchTerm => {
+        setSearchTerm(searchTerm);
+        const matchedProducts = products.filter(product => product.category.toLowerCase().includes(searchTerm.toLowerCase()));
+        console.log(matchedProducts.length);
         setDisplayProducts(matchedProducts);
     }
 
     const handleProductDelete = id => {
-        // const proceed = window.confirm('Are you sure to delete?');
+
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this file!",
@@ -48,18 +47,7 @@ const Action = () => {
                     swal("This Product is safe!");
                 }
             });
-        // if (proceed) {
-        //     fetch(`http://localhost:5000/products/${id}`, {
-        //         method: "DELETE"
-        //     })
-        //         .then(res => res.json())
-        //         .then(data => {
-        //             if (data.deletedCount > 0) {
-        //                 const remainingProducts = displayProducts.filter(product => product._id !== id);
-        //                 setDisplayProducts(remainingProducts);
-        //             }
-        //         })
-        // }
+
     }
 
     return (

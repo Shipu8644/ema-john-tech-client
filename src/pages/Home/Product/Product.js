@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 
+
 const Product = ({ product, handleAddToCart, handleRemoveFromCart }) => {
     const { img, price, star, category, _id } = product;
+
 
     return (
 
         <div className="single-product">
-            {img.startsWith('/9') ?
+            {img?.startsWith('/9') ?
                 <img src={`data:image/png;base64,${img}`} alt="" /> :
 
                 <img src={img} alt="" />
@@ -30,8 +32,7 @@ const Product = ({ product, handleAddToCart, handleRemoveFromCart }) => {
             <br />
             <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
             <br />
-            <br />
-            <Button onClick={() => handleRemoveFromCart(product)}>Remove from Cart</Button>
+
         </div>
 
 

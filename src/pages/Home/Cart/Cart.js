@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Cart.css';
+import { Button } from 'react-bootstrap';
+import swal from 'sweetalert';
+
+
 const Cart = ({ cart }) => {
-    // const totalReducer = (previous, product) => previous + product.price;
-    // const total = cart.reduce(totalReducer, 0);
-    console.log(cart);
+    const [state, setState] = useState(false);
+
+    const handleAlert = () => {
+        setState(true);
+        if (state && totalQuantity > 1) {
+            swal({
+                title: "Congrats!",
+                text: "You will get 20% discount!",
+                icon: "success",
+                button: "Ok!",
+            });
+        }
+        else if (state && totalQuantity > 0 && totalQuantity < 2) {
+            swal("Thanks you for purchasing from here!");
+        }
+        else {
+            swal("Please Order Something!");
+        }
+    }
     let totalQuantity = 0;
     let total = 0;
     for (const product of cart) {
@@ -16,9 +36,14 @@ const Cart = ({ cart }) => {
     const shipping = total > 0 ? 15 : 0;
     const tax = (total + shipping) * 0.10;
     const grandTotal = total + shipping + tax;
+
+
+
     return (
-        <div className='cart-style'>
-            <h5 style={{ color: "red" }}>Hello there, If you added more than one items, You will get 20% discount</h5>
+        <div data-aos="zoom-in-up" className='cart-style '>
+            <h5 className=" text-danger">
+                Hello there, if you added more than one items, you can get 20% discount
+            </h5>
             <div>
                 <h3>Order Summary</h3>
                 <h5>Items Ordered: {totalQuantity}</h5>
@@ -30,7 +55,11 @@ const Cart = ({ cart }) => {
                 <br />
                 {totalQuantity > 1 && <p>Your total: ${(grandTotal.toFixed(2) - grandTotal.toFixed(2) * (20 / 100)).toFixed(2)} [After Discount]</p>}
             </div>
-        </div>
+
+            <Button onClick={handleAlert}>Order</Button>
+
+
+        </div >
     );
 };
 

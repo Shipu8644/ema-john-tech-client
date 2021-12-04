@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import { MdAutoDelete } from "react-icons/md";
+// import Aos from 'aos';
+// import "aos/dist/aos.css";
+
 const ShowProduct = ({ product, handleProductDelete }) => {
     const { img, price, star, category, _id } = product;
+
+    // useEffect(() => {
+    //     Aos.init({ duration: 3000 });
+    // }, [])
+
     return (
-        <div className="single-product">
+        <div className="single-product ">
             <h3 onClick={() => handleProductDelete(product._id)} title='delete' style={{ cursor: 'pointer', textAlign: 'right', color: 'red' }}> <MdAutoDelete /></h3>
             {img?.startsWith('/9') ?
                 <img src={`data:image/png;base64,${img}`} alt="" /> :

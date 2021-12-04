@@ -3,11 +3,11 @@ import { Container, Form, FormControl, Nav, Navbar, Button, NavDropdown } from '
 import { Link } from 'react-router-dom';
 import './Header.css';
 const Header = (props) => {
+
     const getSearchTerm = event => {
-        const searchText = event.target.value;
-        props.searchHandler(searchText);
+        props.searchHandler(event.target.value);
     }
-    console.log(props);
+
 
     return (
         <div className='pt-5'>
@@ -28,7 +28,7 @@ const Header = (props) => {
                                     placeholder="Search by category exp: mobile/camera/laptop "
                                     className="me-2"
                                     aria-label="Search"
-                                    value={props.term}
+
                                     onChange={getSearchTerm}
                                 />
                             </Form>
