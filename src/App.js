@@ -6,6 +6,7 @@ import Details from './pages/Home/Product/Details';
 import AddProduct from './pages/AddProduct/AddProduct';
 import UpdateProduct from './pages/UpdateProduct/UpdateProduct';
 import Action from './pages/Action/Action';
+import Footer from './pages/Footer/Footer';
 
 
 
@@ -21,9 +22,9 @@ function App() {
             <Route path="/update-product/:id" element={<UpdateProduct />} />
             <Route path="/action" element={<Action />} />
             <Route path="/add-product" element={<AddProduct />} />
-
           </Route>
         </Routes>
+        <Footer></Footer>
       </BrowserRouter>
     </div>
   );

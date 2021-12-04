@@ -12,9 +12,9 @@ const Product = ({ product, handleAddToCart, handleRemoveFromCart }) => {
 
         <div className="single-product">
             {img?.startsWith('/9') ?
-                <img src={`data:image/png;base64,${img}`} alt="" /> :
+                <img className="img-fluid" src={`data:image/png;base64,${img}`} alt="" /> :
 
-                <img src={img} alt="" />
+                <img className="img-fluid" src={img} alt="" />
             }
 
 

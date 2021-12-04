@@ -28,13 +28,13 @@ const AddProduct = () => {
 
 
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://murmuring-badlands-98930.herokuapp.com/products', {
             method: 'POST',
             body: formData
         })
             .then(res => res.json())
             .then(data => {
-                if (!data.insertedId) {
+                if (data.insertedId) {
                     swal({
                         title: "Good job!",
                         text: "You added a new product!",
@@ -42,7 +42,7 @@ const AddProduct = () => {
                         button: "Done!",
                     });
                 }
-
+                e.target.reset();
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -63,7 +63,7 @@ const AddProduct = () => {
             <div className='d-flex justify-content-center align-items-center flex-column'>
                 <Form onSubmit={handleSubmit}>
 
-                    <Form.Group controlId="formGridName">
+                    <Form.Group className='ps-xs-5' controlId="formGridName">
                         <Form.Control
                             required
                             style={{ width: '90%' }}

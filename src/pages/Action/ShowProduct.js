@@ -17,9 +17,9 @@ const ShowProduct = ({ product, handleProductDelete }) => {
         <div className="single-product ">
             <h3 onClick={() => handleProductDelete(product._id)} title='delete' style={{ cursor: 'pointer', textAlign: 'right', color: 'red' }}> <MdAutoDelete /></h3>
             {img?.startsWith('/9') ?
-                <img src={`data:image/png;base64,${img}`} alt="" /> :
+                <img className="img-fluid" src={`data:image/png;base64,${img}`} alt="" /> :
 
-                <img src={img} alt="" />
+                <img className="img-fluid" src={img} alt="" />
             }
 
             <h5 style={{ marginTop: '20px' }}>{category}</h5>

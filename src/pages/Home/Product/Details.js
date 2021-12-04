@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row, Button } from 'react-bootstrap';
-import { useLocation, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import Header from '../../Header/Header';
 
@@ -11,10 +11,8 @@ const Details = () => {
     const [product, setProduct] = useState({});
 
 
-    const location = useLocation();
-    console.log(location);
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://murmuring-badlands-98930.herokuapp.com/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id])
@@ -26,12 +24,12 @@ const Details = () => {
             <Header
                 show="show"
             ></Header>
-            <Row md={2} >
+            <Row md={2} xs={1} >
                 <Col>
                     {img?.startsWith('/9') ?
-                        <img src={`data:image/png;base64,${img}`} alt="" /> :
+                        <img style={{ width: '300px' }} className="img-fluid" src={`data:image/png;base64,${img}`} alt="" /> :
 
-                        <img src={img} alt="" />
+                        <img style={{ width: '300px' }} className="img-fluid" src={img} alt="" />
                     }
 
                     <br />

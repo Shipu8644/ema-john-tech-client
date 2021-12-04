@@ -1,7 +1,9 @@
 import React from 'react';
-import { Container, Form, FormControl, Nav, Navbar, Button, NavDropdown } from 'react-bootstrap';
+import { Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import logo from '../../images/logo.png'
+
 const Header = (props) => {
 
     const getSearchTerm = event => {
@@ -13,7 +15,7 @@ const Header = (props) => {
         <div className='pt-5'>
             <Navbar collapseOnSelect expand="lg" fixed='top' bg="dark" variant="dark">
                 <Container>
-                    <Link to='/home' style={{ textDecoration: 'none' }}> <Navbar.Brand >Ema-John</Navbar.Brand></Link>
+                    <Link to='/home' style={{ textDecoration: 'none' }}> <Navbar.Brand ><img style={{ width: '100px', borderRadius: "50px", backgroundColor: 'white', padding: '5px' }} src={logo} alt="" /></Navbar.Brand></Link>
 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">

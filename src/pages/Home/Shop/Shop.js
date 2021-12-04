@@ -13,7 +13,7 @@ const Shop = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://murmuring-badlands-98930.herokuapp.com/products')
             .then(res => res.json())
             .then(data => {
                 setProducts(data);
